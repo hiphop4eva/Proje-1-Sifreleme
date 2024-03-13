@@ -11,7 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\function.cpp" />
     <ClCompile Include="src\src.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\header.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C16A765A-2DD5-2AD1-7613-DC76E2BC0826}</ProjectGuid>
@@ -67,7 +71,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -84,7 +88,7 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
