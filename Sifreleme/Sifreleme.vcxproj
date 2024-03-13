@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\ceasar_.cpp" />
     <ClCompile Include="src\function.cpp" />
     <ClCompile Include="src\src.cpp" />
   </ItemGroup>
