@@ -1,0 +1,7 @@
+﻿  Viegenere.cpp
+C:\Users\ENES\Desktop\Git Hub Proje\ŞifrelemUyg\Viegenere.cpp(20,25): warning C4267: '=': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\ENES\Desktop\Git Hub Proje\ŞifrelemUyg\Viegenere.cpp(37,15): warning C4267: 'başlatılıyor': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\ENES\Desktop\Git Hub Proje\ŞifrelemUyg\Viegenere.cpp(38,20): warning C4267: 'başlatılıyor': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\ENES\Desktop\Git Hub Proje\ŞifrelemUyg\Viegenere.cpp(56,20): warning C4267: 'başlatılıyor': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\ENES\Desktop\Git Hub Proje\ŞifrelemUyg\Viegenere.cpp(57,20): warning C4267: 'başlatılıyor': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+  ŞifrelemUyg.vcxproj -> C:\Users\ENES\Desktop\Git Hub Proje\ŞifrelemUyg\x64\Debug\ŞifrelemUyg.exe
