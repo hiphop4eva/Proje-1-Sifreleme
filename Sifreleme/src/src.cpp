@@ -47,8 +47,6 @@ HRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wparam, LPARAM lparam) 
 	std::string alfabe = "abcdefghijklmnopqrstuvwxyz";
 	std::wstring inputText;
 	std::wstring inputTextSecondary;
-	std::ifstream inputFile;
-	std::ofstream outputFile;
 
 	Ceasar Ceasar;
 	Ceasar.kayma = 3;
@@ -106,6 +104,18 @@ HRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wparam, LPARAM lparam) 
 							Ceasar.sifrele();
 							SetWindowText(outputString, (PWSTR)widenString(Ceasar.sifrelimetin).c_str());
 							UpdateWindow(outputString);
+
+							if (IsDlgButtonChecked(hwnd, 8) == BST_CHECKED) {
+								std::ofstream outputFile;
+								outputFile.open("cipher_text.txt", std::ios::out);
+
+								outputFile << Ceasar.sifrelimetin;
+								outputFile.close();
+								MessageBox(hwnd, L"The input string has been encrypted and exported to the \"cipher_text.txt\" file.", L"Success", MB_OK);
+							}
+							else{
+								MessageBox(hwnd, L"The input string has been encrypted.", L"Success", MB_OK);
+							}
 						}
 					}
 					else if (IsDlgButtonChecked(hwnd, 5) == BST_CHECKED) {
@@ -131,6 +141,18 @@ HRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wparam, LPARAM lparam) 
 							Ceasar.desifrele();
 							SetWindowText(outputString, (PWSTR)widenString(Ceasar.desifrelimetin).c_str());
 							UpdateWindow(outputString);
+
+							if (IsDlgButtonChecked(hwnd, 8) == BST_CHECKED) {
+								std::ofstream outputFile;
+								outputFile.open("restore_text.txt", std::ios::out);
+
+								outputFile << Ceasar.desifrelimetin;
+								outputFile.close();
+								MessageBox(hwnd, L"The input string has been decrypted and exported to the \"restore_text.txt\" file.", L"Success", MB_OK);
+							}
+							else {
+								MessageBox(hwnd, L"The input string has been decrypted.", L"Success", MB_OK);
+							}
 						}
 					}
 					else { MessageBox(hwnd, L"Neither encoding nor decoding option is selected.", L"Error", MB_OK); }
@@ -153,8 +175,22 @@ HRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wparam, LPARAM lparam) 
 							inputText.resize(GetWindowTextLength(inputString) + 1);
 							GetWindowText(inputString, (PWSTR)inputText.c_str(), GetWindowTextLength(inputString) + 1);
 
-							SetWindowText(outputString, (PWSTR)widenString(vieg::sifrele(narrowenString(inputText), narrowenString(inputTextSecondary), alfabe)).c_str());
+							std::string cipher = vieg::sifrele(narrowenString(inputText), narrowenString(inputTextSecondary), alfabe);
+
+							SetWindowText(outputString, (PWSTR)widenString(cipher).c_str());
 							UpdateWindow(outputString);
+
+							if (IsDlgButtonChecked(hwnd, 8) == BST_CHECKED) {
+								std::ofstream outputFile;
+								outputFile.open("cipher_text.txt", std::ios::out);
+
+								outputFile << cipher;
+								outputFile.close();
+								MessageBox(hwnd, L"The input string has been encrypted and exported to the \"cipher_text.txt\" file.", L"Success", MB_OK);
+							}
+							else {
+								MessageBox(hwnd, L"The input string has been encrypted.", L"Success", MB_OK);
+							}
 						}
 					}
 
@@ -172,8 +208,23 @@ HRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wparam, LPARAM lparam) 
 							inputText.resize(GetWindowTextLength(inputString) + 1);
 							GetWindowText(inputString, (PWSTR)inputText.c_str(), GetWindowTextLength(inputString) + 1);
 
-							SetWindowText(outputString, (PWSTR)widenString(vieg::sifreCozumu(narrowenString(inputText), narrowenString(inputTextSecondary), alfabe)).c_str());
+							std::string restore = vieg::sifreCozumu(narrowenString(inputText), narrowenString(inputTextSecondary), alfabe);
+
+							SetWindowText(outputString, (PWSTR)widenString(restore).c_str());
 							UpdateWindow(outputString);
+
+							if (IsDlgButtonChecked(hwnd, 8) == BST_CHECKED) {
+								std::ofstream outputFile;
+								outputFile.open("cipher_text.txt", std::ios::out);
+
+								outputFile << restore;
+								outputFile.close();
+								MessageBox(hwnd, L"The input string has been decrypted and exported to the \"restore_text.txt\" file.", L"Success", MB_OK);
+
+							}
+							else { 
+								MessageBox(hwnd, L"The input string has been decrypted.", L"Success", MB_OK); 
+							}
 						}
 					}
 
@@ -206,6 +257,7 @@ HRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wparam, LPARAM lparam) 
 					pFileOpen->Release();
 				}
 
+				std::ifstream inputFile;
 				inputFile.open(filePath);
 
 				std::string inputFileString;
